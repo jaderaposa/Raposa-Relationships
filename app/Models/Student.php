@@ -19,8 +19,13 @@ class Student extends Model
         return $this->hasOne('App\Models\Profile');
     }
 
-    public function comment()
+    public function comments()
     {
-        return $this->hasMany('App\Models\Comment');
+        return $this->hasMany('App\Models\Comment', 'student_id')->orderBy('id', 'desc');
+    }
+
+    public function subjects()
+    {
+        return $this->belongsToMany('App\Models\Subject');
     }
 }
